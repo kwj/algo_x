@@ -1,5 +1,5 @@
 # algo_x
-A test implementation of Knuth's Algorithm X[^1][^2].
+A test implementation of Knuth's Algorithm X[^1] using dancing links[^2].
 
 ## Interface
 ```ocaml
@@ -67,7 +67,7 @@ It can also be used to resolve Sudoku problem.
 . 9 . | . . . | 4 . .
 ```
 
-> Note: 'sudoku_dlx' is a matrix generator for Sudoku problem. It's not included in this library.
+> Note: *sudoku_dlx* is a matrix generator for Sudoku problem. It's not included in this library.
 
 ```ocaml
 let d = sudoku_dlx "800000000003600000070090200050007000000045700000100030001000068008500010090000400";;
