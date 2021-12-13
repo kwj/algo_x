@@ -75,11 +75,11 @@ let dlx_init col_size =
            |d         |d        |d                  |d
            |          |         |                   |
            |         u| r      u| r                 |       tag: "1" or specified value
-  <----------------- node <--> node <----....-------------->
+  <----------------> node <--> node <----....-------------->
            |        l |d      l |d                  |
            |          |         |                   |
            |          |        u| r                u| r     tag: "2" or specified value
-  <--------------------------- node <----....----> node <-->
+  <--------------------------> node <----....----> node <-->
            |          |       l |d                l |d
            :          :         :                   :
 
