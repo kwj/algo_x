@@ -85,7 +85,7 @@ let dlx_init col_size =
 
                [c]ol_n
                  |                 l : node
-            [u]p |                 r : node
+            [u]p :                 r : node
                | |                 u : node
    [l]eft <-- node --> [r]ight     d : node
                |                   c : node
