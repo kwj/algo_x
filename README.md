@@ -127,8 +127,8 @@ MIT License
 
 Copyright (c) 2021 Jun Kawai
 
----
-[^1]  [Knuth's Algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
+----
+[^1]: [Knuth's Algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
 
-[^2]  [Dancing links](https://arxiv.org/abs/cs/0011047)
+[^2]: [Dancing links](https://arxiv.org/abs/cs/0011047)
 
