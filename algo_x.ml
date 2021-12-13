@@ -57,6 +57,11 @@ let dlx_init col_size =
         cell.tag <- "col_" ^ (string_of_int n);
         loop (pred n) cell (cell :: acc)
     in
+    (*
+      I think it would be safer to allocate array first and then create nodes instead of
+      creating array from list. I feel like it depends on the implementation.
+      Howerever, so far, this has not been a problem.
+     *)
     let head_node = _dlx_node () in
     let col_arr = Array.of_list (head_node :: (loop col_size head_node [])) in
     col_arr.(1).l <- head_node;
