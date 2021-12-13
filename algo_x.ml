@@ -170,7 +170,7 @@ let _dlx_uncover col_n =
   col_n.r.l <- col_n;
   col_n.l.r <- col_n
 
-let rec dlx_solve dlx =
+let dlx_solve dlx =
   let rec find_min n stop result =
     if n == stop then
       result
