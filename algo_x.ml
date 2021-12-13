@@ -59,7 +59,7 @@ let dlx_init col_size =
     in
     (*
       I think it would be safer to allocate array first and then create nodes instead of
-      creating array from list. I feel like it depends on the implementation.
+      creating array from nodes list. I feel like it depends on the implementation.
       Howerever, so far, this has not been a problem.
      *)
     let head_node = _dlx_node () in
