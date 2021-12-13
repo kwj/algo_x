@@ -67,10 +67,10 @@ It can also be used to resolve Sudoku problem.
 . 9 . | . . . | 4 . .
 ```
 
-> Note: 'make_dlx' is a matrix generator for Sudoku problem. It's not included in this library.
+> Note: 'sudoku_dlx' is a matrix generator for Sudoku problem. It's not included in this library.
 
 ```ocaml
-let d = make_dlx "800000000003600000070090200050007000000045700000100030001000068008500010090000400";;
+let d = sudoku_dlx "800000000003600000070090200050007000000045700000100030001000068008500010090000400";;
 val d : t = ...
 <snip>
 # let contents = match dlx_solve d with Some v -> v | _ -> [];;
