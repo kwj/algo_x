@@ -32,7 +32,8 @@ We will use an example from Wikipedia[1].
 
 ```ocaml
 # let d = dlx_init 7;;
-val d : t =                                                                                                                                        <snip>
+val d : t = ...
+<snip>
 # dlx_add_row ~name:"A" d [1; 4; 7];;
 - : unit = ()
 # dlx_add_row ~name:"B" d [1; 4];;
