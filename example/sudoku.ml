@@ -54,7 +54,6 @@ let print_result lst =
   aux 9 (List.sort compare lst)
 ;;
 
-
 let make_tag l n =
   Format.sprintf "%c%d" (Char.chr (Char.code 'a' + l)) (n + 1)
 ;;
