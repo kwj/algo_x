@@ -20,4 +20,5 @@ if [ ! -f $1 ]; then
     exit 1
 fi
 
+# for OCaml 5.0 or later
 ocaml -I +str -I .. algo_x.cma str.cma $1
