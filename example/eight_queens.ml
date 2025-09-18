@@ -52,7 +52,7 @@
  * h7    0  0 ..  1    0  0 ..  0 |  0   0  ..   1     0   0  ..  0   0   1  ..  0
  * h8    0  0 ..  1    0  0 ..  1 |  0   0  ..   0     0   0  ..  0   1   0  ..  0
  *
- * For eight queens puzzle, we create an AlgorithmX object with `new AlgorithmX(16 + 26, 16)`.
+ * For eight queens puzzle, we create an object with `Algo_x.dlx_init (8 * 2) (8 * 2 + 13 * 2)`.
  *)
 
 let print_result lst =
