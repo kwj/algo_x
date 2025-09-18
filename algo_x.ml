@@ -6,30 +6,6 @@
     https://en.wikipedia.org/wiki/Dancing_Links
  *)
 
-(*
-MIT License
-
-Copyright (c) 2021 Jun Kawai
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
- *)
-
 (* ---------------------------------------------------------------- *)
 
 type node = {
@@ -39,7 +15,8 @@ type node = {
     mutable r : node;
     mutable u : node;
     mutable d : node;
-    mutable c : node
+    mutable c : node;
+    mutable exactly_once : bool
 }
 
 type t = {
@@ -51,7 +28,7 @@ type t = {
 }
        
 let _dlx_node () =
-  let rec n = { tag = "head"; cnt = 0; l = n; r = n; u = n; d = n; c = n} in
+  let rec n = { tag = "head"; cnt = 0; l = n; r = n; u = n; d = n; c = n; exactly_once = true} in
   n
 
 (*
@@ -67,7 +44,7 @@ let _dlx_node () =
   ncol = n
  *)
   
-let dlx_init col_size =
+let dlx_init ?(n_exactly_once = max_int) col_size =
   if col_size <= 0 then
     raise (Failure "invalid column size")
   else
@@ -79,6 +56,7 @@ let dlx_init col_size =
         cell.r <- prev;
         prev.l <- cell;
         cell.tag <- "col_" ^ (string_of_int n);
+        if n > n_exactly_once then cell.exactly_once <- false;
         loop (pred n) cell (cell :: acc)
     in
     (*
@@ -91,6 +69,7 @@ let dlx_init col_size =
     col_arr.(1).l <- head_node;
     head_node.r <- col_arr.(1);
     head_node.cnt <- max_int;
+    head_node.exactly_once <- false;
 
     {head = head_node; cs = col_arr; ncol = col_size; nrow = 0; ans = []}
 
@@ -201,7 +180,7 @@ let _dlx_uncover col_n =
 
 let dlx_solve dlx =
   let rec find_min n stop result =
-    if n == stop then
+    if n.exactly_once = false then
       result
     else
       if n.cnt < result.cnt then
@@ -210,7 +189,7 @@ let dlx_solve dlx =
         find_min n.r stop result
   in
   let rec solve d acc =
-    if d.head.r == d.head then
+    if d.head.r.exactly_once = false then
       d.ans <- (List.rev acc) :: d.ans
     else (
       let col_n = find_min d.head.r d.head d.head.r in
