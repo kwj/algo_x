@@ -54,10 +54,6 @@ let print_result lst =
   aux 9 (List.sort compare lst)
 ;;
 
-let make_tag l n =
-  Format.sprintf "%c%d" (Char.chr (Char.code 'a' + l)) (n + 1)
-;;
-
 let make_dlx q =
   (* number of columns = 324 (81 + 81 + 81 + 81) *)
   let d = Algo_x.dlx_init 324 in
