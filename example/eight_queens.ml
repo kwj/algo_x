@@ -60,9 +60,6 @@ let print_result lst =
   Format.printf "@."
 ;;
 
-
-;;
-
 let make_dlx n =
   assert (n > 0);
 
