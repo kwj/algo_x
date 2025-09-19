@@ -179,20 +179,20 @@ let _dlx_uncover col_n =
   col_n.l.r <- col_n
 
 let dlx_solve dlx =
-  let rec find_min n stop result =
+  let rec find_min n result =
     if n.exactly_once = false then
       result
     else
       if n.cnt < result.cnt then
-        find_min n.r stop n
+        find_min n.r n
       else
-        find_min n.r stop result
+        find_min n.r result
   in
   let rec solve d acc =
     if d.head.r.exactly_once = false then
       d.ans <- (List.rev acc) :: d.ans
     else (
-      let col_n = find_min d.head.r d.head d.head.r in
+      let col_n = find_min d.head.r d.head.r in
       if col_n.cnt > 0 then (
         _dlx_cover col_n;
         let _iter n =
